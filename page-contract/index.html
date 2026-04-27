@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>인디게임 팀 공동 개발 계약서</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Malgun Gothic', '맑은 고딕', sans-serif; font-size: 15px; line-height: 2; color: #1a1a1a; background: #f5f5f0; padding: 40px 20px; }
+    .page { max-width: 800px; margin: 0 auto; background: #fff; padding: 70px 80px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    h1 { font-size: 22px; text-align: center; letter-spacing: 6px; margin-bottom: 8px; }
+    .subtitle { text-align: center; font-size: 13px; color: #666; margin-bottom: 50px; }
+    .preamble { border-top: 2px solid #1a1a1a; border-bottom: 1px solid #ccc; padding: 20px 0; margin-bottom: 40px; font-size: 14px; color: #333; }
+    .parties { margin-bottom: 40px; }
+    .party-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 12px; }
+    .party-table th { background: #f0f0ec; padding: 8px 14px; text-align: left; font-weight: 600; border: 1px solid #ddd; width: 100px; }
+    .party-table td { padding: 8px 14px; border: 1px solid #ddd; }
+    article { margin-bottom: 36px; }
+    h2 { font-size: 15px; font-weight: 700; border-left: 3px solid #1a1a1a; padding-left: 10px; margin-bottom: 12px; }
+    p { margin-bottom: 8px; padding-left: 4px; }
+    ol, ul { padding-left: 24px; margin-bottom: 8px; }
+    li { margin-bottom: 6px; }
+    .indent { padding-left: 20px; }
+    .option-box { border: 1px solid #bbb; border-radius: 4px; padding: 18px 20px; margin: 10px 0; background: #fafaf8; }
+    .option-box .option-title { font-weight: 700; margin-bottom: 6px; }
+    .option-select { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 6px; }
+    .checkbox { width: 16px; height: 16px; border: 1px solid #555; display: inline-block; margin-top: 4px; flex-shrink: 0; }
+    .highlight { background: #fffbe6; border-left: 3px solid #f0b429; padding: 10px 14px; margin: 10px 0; font-size: 14px; }
+    .divider { border: none; border-top: 1px solid #ddd; margin: 40px 0; }
+    .sign-section { margin-top: 60px; }
+    .sign-section h2 { border-left: none; padding-left: 0; text-align: center; margin-bottom: 30px; }
+    .sign-date { text-align: center; font-size: 15px; margin-bottom: 40px; letter-spacing: 2px; }
+    .sign-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .sign-box { border: 1px solid #ccc; padding: 20px; border-radius: 4px; }
+    .sign-box .role { font-size: 12px; color: #666; margin-bottom: 4px; }
+    .sign-box .name-line { font-size: 14px; font-weight: 600; border-bottom: 1px solid #bbb; padding-bottom: 4px; margin-bottom: 12px; }
+    .sign-box .sign-area { height: 50px; display: flex; align-items: flex-end; font-size: 13px; color: #aaa; }
+    @media print { body { background: #fff; padding: 0; } .page { box-shadow: none; padding: 40px 60px; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <h1>공동 개발 계약서</h1>
+  <p class="subtitle">인디게임 팀 내부 약정</p>
+
+  <div class="preamble">
+    본 계약은 인디게임 개발 팀의 구성원 전원이 공동의 목표를 향해 성실히 의무를 이행하고,
+    그 결과물과 수익을 공정하게 분배하기 위하여 체결하는 약정이다.
+    본 계약은 팀을 최대한 유지하며 끝까지 함께 작업하는 것을 최우선 목표로 한다.
+  </div>
+
+
+  <!-- 제1조 -->
+  <article>
+    <h2>제1조 &nbsp; 계약 당사자</h2>
+    <table class="party-table">
+      <tr>
+        <th>역할</th>
+        <th>성명</th>
+        <th>비고</th>
+      </tr>
+      <tr>
+        <td>기획 · 대표</td>
+        <td>[               ]</td>
+        <td>개인사업자 명의인 · 팀장</td>
+      </tr>
+      <tr>
+        <td>개발</td>
+        <td>[               ]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>UI</td>
+        <td>[               ]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>애니메이션</td>
+        <td>[               ]</td>
+        <td></td>
+      </tr>
+    </table>
+    <p style="margin-top:10px; font-size:13px; color:#555;">
+      ※ 외주 클라이언트 개발자는 본 계약의 당사자가 아니며, 별도 용역 계약에 따라 고정 급여를 수령한다.
+    </p>
+  </article>
+
+
+  <!-- 제2조 -->
+  <article>
+    <h2>제2조 &nbsp; 계약 기간</h2>
+    <p>① 본 계약의 유효 기간은 <strong>2025년 5월 1일</strong>부터
+       <strong>인디게임 데브캠프 2차 결과 발표일</strong>까지로 한다.</p>
+    <p>② 계약 만료 후 새로운 목표의 추가가 필요하다고 판단될 경우,
+       당사자 전원의 합의를 통해 계약을 연장할 수 있다.</p>
+    <p>③ 연장 계약의 조건 및 기간은 연장 합의 시점에 별도로 협의하여 결정한다.</p>
+  </article>
+
+
+  <!-- 제3조 -->
+  <article>
+    <h2>제3조 &nbsp; 팀 구성 및 역할</h2>
+    <p>① 팀은 기획·대표, 개발, UI, 애니메이션 총 4인으로 구성되며, 기획·대표가 팀장직을 수행한다.</p>
+    <p>② 외주 클라이언트 개발자는 팀원이 아니며, 팀원으로의 승격은 다음 조건을 모두 충족하여야 한다.</p>
+    <ol class="indent">
+      <li>당사자 전원의 동의</li>
+      <li>승격 시 분배율은 기존 팀원의 선행 기여를 고려하여 기존 팀원보다 낮게 책정할 수 있으며,
+          구체적인 비율은 전원 합의로 결정한다.</li>
+    </ol>
+  </article>
+
+
+  <!-- 제4조 -->
+  <article>
+    <h2>제4조 &nbsp; 의사결정 원칙</h2>
+    <p>① 본 계약과 관련된 모든 의사결정은 당사자 <strong>전원의 합의</strong>를 원칙으로 한다.</p>
+    <p>② 특정 조항에서 별도의 의결 방식을 정한 경우에는 그에 따른다.</p>
+  </article>
+
+
+  <!-- 제5조 -->
+  <article>
+    <h2>제5조 &nbsp; 의무 조항</h2>
+    <p>① 각 팀원은 격주로 자신의 상황을 고려하여 현실적인 주간 업무량을 자율적으로 설정한다.</p>
+    <p>② 각 팀원은 본인이 설정한 주간 업무를 이행할 의무를 진다. 이것이 본 계약상 팀원의 핵심 의무이다.</p>
+    <p>③ 특정 팀원의 의무 이행 여부에 대한 판단은
+       <strong>해당 당사자를 제외한 나머지 팀원 전원의 합의</strong>로 결정한다.
+       이는 팀장이 당사자인 경우에도 동일하게 적용된다.</p>
+  </article>
+
+
+  <!-- 제6조 -->
+  <article>
+    <h2>제6조 &nbsp; 상금 배분</h2>
+    <p>① 수령한 상금은 아래 비율에 따라 배분한다.</p>
+    <ul class="indent">
+      <li>기획·대표 : <strong>20%</strong></li>
+      <li>개발 : <strong>20%</strong></li>
+      <li>UI : <strong>20%</strong></li>
+      <li>애니메이션 : <strong>20%</strong></li>
+      <li>우수팀원 장려금 : <strong>10%</strong></li>
+      <li>팀 공용비 : <strong>10%</strong></li>
+    </ul>
+    <p>② 우수팀원 장려금 수령자 및 금액은 전원 합의로 결정한다.
+       전원 합의에 이르지 못한 경우, 10%를 4인에게 각 <strong>2.5%씩</strong> 균등 지급한다.</p>
+    <p>③ 팀 공용비 항목이 상금의 10%를 초과한 경우, 초과분은 팀원 4인에게 <strong>균등하게 차감</strong>하여 정산한다.</p>
+  </article>
+
+
+  <!-- 제7조 -->
+  <article>
+    <h2>제7조 &nbsp; 팀 공용비</h2>
+    <p>① 팀 공용비란 팀 운영을 위해 지출된 비용으로, 외주 클라이언트 개발자의 급여, 툴 구독료,
+       기타 팀 공동 지출 등을 포함한다.</p>
+    <p>② 공용비의 정산 기간은 <strong>직전 합격 발표일부터 다음 합격 발표일(계약 종료일)</strong>까지로 한다.</p>
+    <p>③ 계약 기간 이전에 팀원 각자가 부담한 기존 운영비는 팀 공용비에 포함하여 상금 정산 시 환급한다.</p>
+    <p>④ 공용비 지출은 전원 합의로 결정한다.</p>
+  </article>
+
+
+  <!-- 제8조 -->
+  <article>
+    <h2>제8조 &nbsp; 재무 관리</h2>
+    <p>대표는 계약 서명 시 아래 두 가지 방식 중 하나를 선택하여 서명한다.</p>
+
+    <div class="option-box">
+      <div class="option-select">
+        <span class="checkbox"></span>
+        <div>
+          <div class="option-title">1안 — 단독 재무 책임</div>
+          <p>대표는 팀 재무를 단독으로 관리하며, 이에 따른 모든 재무상 결과에 대한 책임을 단독으로 진다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="option-box">
+      <div class="option-select">
+        <span class="checkbox"></span>
+        <div>
+          <div class="option-title">2안 — 공동 재무 투명형</div>
+          <p>팀 지출은 전원 합의로 결정하며, 재무상 책임은 팀원 전체가 공동으로 부담한다.
+             대표는 팀 통장의 입출금 내역을 <strong>월 1회 이상</strong> 전 팀원에게 공개할 의무를 진다.
+             이에 더하여 각 팀원은 월 1회에 한하여 수시로 내역 공개를 개별 요청할 수 있으며, 대표는 이에 응할 의무를 진다.
+             공개 의무를 위반한 경우, 나머지 팀원은 이의를 제기할 수 있으며
+             전원 합의에 따라 적절한 조치를 취할 수 있다.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+  <!-- 제9조 -->
+  <article>
+    <h2>제9조 &nbsp; 탈퇴</h2>
+    <p>이 조에서 <strong>'1차 출시'</strong>란 게임이 스팀(Steam) 플랫폼에 정식 등록되어 서비스를 개시한 날로부터 <strong>1개월이 경과한 시점</strong>을 말한다.</p>
+    <p>① 탈퇴는 <strong>계약 종료 시점</strong>에만 가능하다.</p>
+    <p>② 게임의 <strong>1차 출시 이후</strong>에는 자유롭게 탈퇴할 수 있다.</p>
+    <p>③ 게임의 <strong>1차 출시 이전</strong>에 탈퇴를 원하는 팀원은 다음 의무를 이행하여야 한다.</p>
+    <ol class="indent">
+      <li>본인의 역할을 대체할 후임자를 직접 구한다.</li>
+      <li>후임자에게 <strong>최소 2주 이상</strong> 인수인계를 성실히 수행한다.</li>
+      <li>인수인계 기간 동안은 탈퇴한 것으로 간주하여, 해당 기간의 지분 및 상금을 수령할 수 없다.</li>
+    </ol>
+    <p>④ 인수인계가 미흡하다고 판단되는 경우(판단 주체: 당사자 제외 나머지 전원 합의),
+       인수인계가 충분히 완료될 때까지 탈퇴가 허용되지 않는다.</p>
+    <p>⑤ 탈퇴자는 팀이 배정한 인수인계 조건이 불합리하다고 판단되는 경우,
+       나머지 팀원 전원에게 이의를 제기할 수 있으며, 이의가 수용되지 않을 경우
+       인수인계 없이 즉시 탈퇴할 수 있다.</p>
+
+    <div class="highlight">
+      ⑥ 게임의 1차 출시 이전에 팀을 탈퇴하는 행위는 팀에 불이익을 준 것으로 간주한다.
+      단, 별도의 손해배상 청구는 하지 않는다.
+    </div>
+  </article>
+
+
+  <!-- 제10조 -->
+  <article>
+    <h2>제10조 &nbsp; 탈퇴 후 잔류 의무</h2>
+    <p>① 탈퇴 후에도 팀의 유지를 위해 필요한 협조 의무는 유지된다.</p>
+    <p>② 탈퇴자는 서류 제출, 행정 처리 등 팀으로부터 협조 요청을 받은 경우 적극적으로 응하여야 한다.</p>
+  </article>
+
+
+  <!-- 제11조 -->
+  <article>
+    <h2>제11조 &nbsp; 준거법 및 관할</h2>
+    <p>① 본 계약은 대한민국 법령에 따라 해석되고 이행된다.</p>
+    <p>② 본 계약과 관련하여 분쟁이 발생한 경우, 당사자 간 협의를 우선으로 하며
+       협의가 이루어지지 않을 경우 <strong>서울중앙지방법원</strong>을 제1심 관할 법원으로 한다.</p>
+  </article>
+
+
+  <hr class="divider" />
+
+
+  <!-- 서명 -->
+  <div class="sign-section">
+    <h2>서 &nbsp; 명</h2>
+    <p class="sign-date">2025년 &nbsp; 5월 &nbsp; 1일</p>
+
+    <div class="sign-grid">
+      <div class="sign-box">
+        <div class="role">기획 · 대표 (팀장)</div>
+        <div class="name-line">[               ]</div>
+        <div style="font-size:13px; color:#555; margin-bottom:6px;">
+          재무 방식 선택: &nbsp; □ 1안 &nbsp;&nbsp; □ 2안
+        </div>
+        <div class="sign-area">서명 ______________</div>
+      </div>
+
+      <div class="sign-box">
+        <div class="role">개발</div>
+        <div class="name-line">[               ]</div>
+        <div class="sign-area">서명 ______________</div>
+      </div>
+
+      <div class="sign-box">
+        <div class="role">UI</div>
+        <div class="name-line">[               ]</div>
+        <div class="sign-area">서명 ______________</div>
+      </div>
+
+      <div class="sign-box">
+        <div class="role">애니메이션</div>
+        <div class="name-line">[               ]</div>
+        <div class="sign-area">서명 ______________</div>
+      </div>
+    </div>
+
+    <p style="margin-top:30px; font-size:13px; color:#888; text-align:center;">
+      본 계약서는 동일한 내용으로 4부를 작성하여 각 당사자가 1부씩 보관한다.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
