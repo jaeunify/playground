@@ -5,44 +5,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>게임 제작 하도급 계약서</title>
   <style>
+    :root {
+      --bg: #f5f5f0;
+      --page-bg: #ffffff;
+      --text: #1a1a1a;
+      --text-strong: #1a1a1a;
+      --text-mid: #333333;
+      --text-soft: #555555;
+      --text-muted: #666666;
+      --text-faint: #888888;
+      --text-dim: #aaaaaa;
+      --border-strong: #1a1a1a;
+      --border: #cccccc;
+      --border-light: #dddddd;
+      --border-table: #bbbbbb;
+      --th-bg: #f0f0ec;
+      --th-sub-bg: #f7f7f3;
+      --highlight-bg: #fffbe6;
+      --highlight-border: #f0b429;
+      --sign-full-bg: #fafaf6;
+      --shadow: 0 2px 20px rgba(0,0,0,0.08);
+      --toggle-bg: #ffffff;
+      --toggle-border: #cccccc;
+    }
+    :root.dark {
+      --bg: #161616;
+      --page-bg: #1f1f1f;
+      --text: #e6e6e6;
+      --text-strong: #f5f5f5;
+      --text-mid: #d0d0d0;
+      --text-soft: #b8b8b8;
+      --text-muted: #999999;
+      --text-faint: #7e7e7e;
+      --text-dim: #6a6a6a;
+      --border-strong: #e6e6e6;
+      --border: #4a4a4a;
+      --border-light: #3a3a3a;
+      --border-table: #444444;
+      --th-bg: #2a2a2a;
+      --th-sub-bg: #323232;
+      --highlight-bg: #3a3320;
+      --highlight-border: #d4a017;
+      --sign-full-bg: #262624;
+      --shadow: 0 2px 20px rgba(0,0,0,0.5);
+      --toggle-bg: #2a2a2a;
+      --toggle-border: #4a4a4a;
+    }
+    :root.dark [style*="color:#555"],
+    :root.dark [style*="color:#888"],
+    :root.dark [style*="color:#333"] { color: var(--text-soft) !important; }
+    :root.dark [style*="color:#aaa"] { color: var(--text-dim) !important; }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Malgun Gothic', '맑은 고딕', sans-serif; font-size: 15px; line-height: 2; color: #1a1a1a; background: #f5f5f0; padding: 40px 20px; }
-    .page { max-width: 820px; margin: 0 auto; background: #fff; padding: 70px 80px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
-    h1 { font-size: 22px; text-align: center; letter-spacing: 6px; margin-bottom: 8px; }
-    .subtitle { text-align: center; font-size: 13px; color: #666; margin-bottom: 40px; }
-    .preamble { border-top: 2px solid #1a1a1a; border-bottom: 1px solid #ccc; padding: 20px 0; margin-bottom: 36px; font-size: 14px; color: #333; }
-    .section-title { font-size: 16px; font-weight: 700; text-align: center; margin: 40px 0 18px; letter-spacing: 4px; }
+    body { font-family: 'Malgun Gothic', '맑은 고딕', sans-serif; font-size: 15px; line-height: 2; color: var(--text); background: var(--bg); padding: 40px 20px; transition: background 0.2s ease, color 0.2s ease; }
+    .page { max-width: 820px; margin: 0 auto; background: var(--page-bg); padding: 70px 80px; box-shadow: var(--shadow); transition: background 0.2s ease; }
+    h1 { font-size: 22px; text-align: center; letter-spacing: 6px; margin-bottom: 8px; color: var(--text-strong); }
+    .subtitle { text-align: center; font-size: 13px; color: var(--text-muted); margin-bottom: 40px; }
+    .preamble { border-top: 2px solid var(--border-strong); border-bottom: 1px solid var(--border); padding: 20px 0; margin-bottom: 36px; font-size: 14px; color: var(--text-mid); }
+    .section-title { font-size: 16px; font-weight: 700; text-align: center; margin: 40px 0 18px; letter-spacing: 4px; color: var(--text-strong); }
     .party-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 12px; }
-    .party-table th { background: #f0f0ec; padding: 8px 14px; text-align: left; font-weight: 600; border: 1px solid #ddd; }
-    .party-table td { padding: 8px 14px; border: 1px solid #ddd; }
+    .party-table th { background: var(--th-bg); padding: 8px 14px; text-align: left; font-weight: 600; border: 1px solid var(--border-light); color: var(--text-strong); }
+    .party-table td { padding: 8px 14px; border: 1px solid var(--border-light); }
     .cover-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 30px; }
-    .cover-table th { background: #f0f0ec; padding: 8px 12px; text-align: center; font-weight: 600; border: 1px solid #bbb; vertical-align: middle; }
-    .cover-table td { padding: 8px 12px; border: 1px solid #bbb; vertical-align: middle; }
-    .cover-table .sub-th { background: #f7f7f3; font-weight: 500; }
+    .cover-table th { background: var(--th-bg); padding: 8px 12px; text-align: center; font-weight: 600; border: 1px solid var(--border-table); vertical-align: middle; color: var(--text-strong); }
+    .cover-table td { padding: 8px 12px; border: 1px solid var(--border-table); vertical-align: middle; }
+    .cover-table .sub-th { background: var(--th-sub-bg); font-weight: 500; }
     article { margin-bottom: 30px; }
-    h2 { font-size: 15px; font-weight: 700; border-left: 3px solid #1a1a1a; padding-left: 10px; margin-bottom: 12px; }
-    h3 { font-size: 14px; font-weight: 700; margin: 16px 0 8px; color: #333; }
+    h2 { font-size: 15px; font-weight: 700; border-left: 3px solid var(--border-strong); padding-left: 10px; margin-bottom: 12px; color: var(--text-strong); }
+    h3 { font-size: 14px; font-weight: 700; margin: 16px 0 8px; color: var(--text-mid); }
     p { margin-bottom: 6px; padding-left: 4px; line-height: 1.9; }
     ol, ul { padding-left: 24px; margin-bottom: 8px; }
     li { margin-bottom: 4px; line-height: 1.85; }
     .indent { padding-left: 20px; }
-    .checkbox { width: 14px; height: 14px; border: 1px solid #555; display: inline-block; vertical-align: middle; margin-right: 4px; }
-    .highlight { background: #fffbe6; border-left: 3px solid #f0b429; padding: 10px 14px; margin: 10px 0; font-size: 14px; }
-    .divider { border: none; border-top: 1px solid #ddd; margin: 40px 0; }
+    .checkbox { width: 14px; height: 14px; border: 1px solid var(--text-soft); display: inline-block; vertical-align: middle; margin-right: 4px; position: relative; }
+    .checkbox.checked::before { content: '✓'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -52%); font-size: 14px; font-weight: 700; color: var(--text-strong); line-height: 1; }
+    .highlight { background: var(--highlight-bg); border-left: 3px solid var(--highlight-border); padding: 10px 14px; margin: 10px 0; font-size: 14px; }
+    .divider { border: none; border-top: 1px solid var(--border-light); margin: 40px 0; }
     .sign-section { margin-top: 50px; }
     .sign-section h2 { border-left: none; padding-left: 0; text-align: center; margin-bottom: 30px; letter-spacing: 6px; }
     .sign-date { text-align: center; font-size: 15px; margin-bottom: 40px; letter-spacing: 2px; }
     .sign-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .sign-box { border: 1px solid #ccc; padding: 18px; border-radius: 4px; }
-    .sign-box.full { grid-column: 1 / -1; background: #fafaf6; }
-    .sign-box .role { font-size: 12px; color: #666; margin-bottom: 4px; }
-    .sign-box .name-line { font-size: 14px; font-weight: 600; border-bottom: 1px solid #bbb; padding-bottom: 4px; margin-bottom: 12px; }
-    .sign-box .info-line { font-size: 12px; color: #555; margin-bottom: 6px; }
-    .sign-box .sign-area { height: 40px; display: flex; align-items: flex-end; font-size: 13px; color: #aaa; }
-    @media print { body { background: #fff; padding: 0; } .page { box-shadow: none; padding: 40px 60px; } }
+    .sign-box { border: 1px solid var(--border); padding: 18px; border-radius: 4px; }
+    .sign-box.full { grid-column: 1 / -1; background: var(--sign-full-bg); }
+    .sign-box .role { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+    .sign-box .name-line { font-size: 14px; font-weight: 600; border-bottom: 1px solid var(--border-table); padding-bottom: 4px; margin-bottom: 12px; }
+    .sign-box .info-line { font-size: 12px; color: var(--text-soft); margin-bottom: 6px; }
+    .sign-box .sign-area { height: 40px; display: flex; align-items: flex-end; font-size: 13px; color: var(--text-dim); }
+
+    #theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--toggle-border); background: var(--toggle-bg); color: var(--text); cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease; }
+    #theme-toggle:hover { transform: scale(1.08); }
+
+    @media print {
+      body { background: #fff; padding: 0; color: #1a1a1a; }
+      .page { box-shadow: none; padding: 40px 60px; background: #fff; }
+      #theme-toggle { display: none; }
+    }
   </style>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
+<button id="theme-toggle" type="button" aria-label="다크 모드 전환" title="다크 모드 전환">🌙</button>
 <div class="page">
 
   <h1>게임 제작 하도급 계약서</h1>
@@ -81,30 +153,12 @@
       <td colspan="2">익스트랙션 슈터 / Steam</td>
     </tr>
     <tr>
-      <th rowspan="2">기획안 제출일 및<br/>수정요구기간 (제7조 관련)</th>
-      <td class="sub-th">기획안 제출일</td>
-      <td colspan="2">계약체결일로부터 ( &nbsp;&nbsp; )일 이내</td>
-    </tr>
-    <tr>
-      <td class="sub-th">기획안 수정요구기간</td>
-      <td colspan="2">기획안 수정요구일로부터 ( &nbsp;&nbsp; )일 이내</td>
-    </tr>
-    <tr>
       <th>계약기간 (납품일자)<br/>(제13조 관련)</th>
-      <td colspan="3"><strong>2025년 5월 1일</strong> ~ <strong>인디게임 데브캠프 2차 결과 발표일</strong> (&nbsp;&nbsp;&nbsp;년 &nbsp;&nbsp;월 &nbsp;&nbsp;일 납품)</td>
+      <td colspan="3"><strong>2026년 5월 1일</strong> ~ <strong>게임 'the Cardkov'의 Steam 정식 출시일</strong> (Steam 정식 출시일을 납품일자로 하며, 구체적 일자는 별도로 정하지 아니한다)</td>
     </tr>
     <tr>
-      <th>지식재산권 양도/<br/>이용허락 기간 (제19조 관련)</th>
-      <td colspan="3">[&nbsp;&nbsp;&nbsp;&nbsp;]년 [&nbsp;&nbsp;]월 [&nbsp;&nbsp;]일 ~ [&nbsp;&nbsp;&nbsp;&nbsp;]년 [&nbsp;&nbsp;]월 [&nbsp;&nbsp;]일 (양도시 [&nbsp;&nbsp;&nbsp;&nbsp;]년 [&nbsp;&nbsp;]월 [&nbsp;&nbsp;]일)</td>
-    </tr>
-    <tr>
-      <th rowspan="2">납품기한의 연장 및<br/>연장시 지체상금요율<br/>(제14조 관련)</th>
-      <td class="sub-th">납품기한 연장 요청일</td>
-      <td colspan="2">납품예정일로부터 ( &nbsp;&nbsp; )일 이전까지</td>
-    </tr>
-    <tr>
-      <td class="sub-th">납품기한 연장시 지체상금요율</td>
-      <td colspan="2">( &nbsp;&nbsp; )/1,000 (지체일당)</td>
+      <th>납품기한의 연장<br/>(제13조 관련)</th>
+      <td colspan="3">납품예정일로부터 ( &nbsp;&nbsp; )일 이전까지 연장을 요청할 수 있다</td>
     </tr>
     <tr>
       <th rowspan="9">대금 및 지급시기 등<br/>(제16조 관련)</th>
@@ -146,7 +200,7 @@
       <td>[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</td>
     </tr>
     <tr>
-      <th rowspan="2">이행보증금<br/>(제24조 관련)</th>
+      <th rowspan="2">이행보증금<br/>(제25조 관련)</th>
       <td class="sub-th">금액</td>
       <td colspan="2">[&nbsp;&nbsp;&nbsp;&nbsp;] 원 &nbsp;&nbsp; / &nbsp;&nbsp; <span class="checkbox"></span> 면제</td>
     </tr>
@@ -155,12 +209,8 @@
       <td colspan="2">[&nbsp;&nbsp;&nbsp;&nbsp;]년 [&nbsp;&nbsp;]월 [&nbsp;&nbsp;]일</td>
     </tr>
     <tr>
-      <th>지체상금요율<br/>(제21조 관련)</th>
-      <td colspan="3">( &nbsp;&nbsp; )/1,000 (지체일당)</td>
-    </tr>
-    <tr>
-      <th>저작재산권 양도 여부<br/>(제19조 관련)</th>
-      <td colspan="3"><span class="checkbox"></span> 양도함 &nbsp;&nbsp; <span class="checkbox"></span> 양도하지 않음 &nbsp;&nbsp; <span class="checkbox"></span> 추후 협의함</td>
+      <th>저작재산권 양도 여부<br/>(제20조·제21조 관련)</th>
+      <td colspan="3"><span class="checkbox"></span> 양도함 &nbsp;&nbsp; <span class="checkbox checked"></span> <strong>양도하지 않음</strong> &nbsp;&nbsp; <span class="checkbox"></span> 추후 협의함</td>
     </tr>
     <tr>
       <th>양도하는 저작재산권의<br/>종류</th>
@@ -175,27 +225,27 @@
     </tr>
     <tr>
       <th>저작재산권 이용허락 여부<br/>(저작재산권을 양도하지 않을 경우)</th>
-      <td colspan="3"><span class="checkbox"></span> 비독점적 이용허락함 &nbsp;&nbsp; <span class="checkbox"></span> 독점적 이용허락함 &nbsp;&nbsp; <span class="checkbox"></span> 이용허락하지 않음 &nbsp;&nbsp; <span class="checkbox"></span> 추후 협의함</td>
+      <td colspan="3"><span class="checkbox"></span> 비독점적 이용허락함 &nbsp;&nbsp; <span class="checkbox checked"></span> <strong>독점적 이용허락함</strong> &nbsp;&nbsp; <span class="checkbox"></span> 이용허락하지 않음 &nbsp;&nbsp; <span class="checkbox"></span> 추후 협의함</td>
     </tr>
     <tr>
       <th>이용허락하는 저작재산권의 종류</th>
       <td colspan="3">
-        <span class="checkbox"></span> 복제권 &nbsp; <span class="checkbox"></span> 공연권 &nbsp; <span class="checkbox"></span> 공중송신권 &nbsp;
-        <span class="checkbox"></span> 전시권 &nbsp; <span class="checkbox"></span> 배포권 &nbsp; <span class="checkbox"></span> 대여권 &nbsp;
-        <span class="checkbox"></span> 2차적저작물작성권
+        <span class="checkbox checked"></span> 복제권 &nbsp; <span class="checkbox checked"></span> 공연권 &nbsp; <span class="checkbox checked"></span> 공중송신권 &nbsp;
+        <span class="checkbox checked"></span> 전시권 &nbsp; <span class="checkbox checked"></span> 배포권 &nbsp; <span class="checkbox checked"></span> 대여권 &nbsp;
+        <span class="checkbox checked"></span> 2차적저작물작성권
       </td>
     </tr>
     <tr>
       <th>상표출원권</th>
-      <td colspan="3"><span class="checkbox"></span> 양도함 &nbsp;&nbsp; <span class="checkbox"></span> 양도하지 않음 &nbsp;&nbsp; <span class="checkbox"></span> 추후 협의함</td>
+      <td colspan="3"><span class="checkbox"></span> 양도함 &nbsp;&nbsp; <span class="checkbox checked"></span> <strong>양도하지 않음</strong> &nbsp;&nbsp; <span class="checkbox"></span> 추후 협의함</td>
     </tr>
     <tr>
       <th>디자인출원권</th>
-      <td colspan="3"><span class="checkbox"></span> 양도함 &nbsp;&nbsp; <span class="checkbox"></span> 양도하지 않음 &nbsp;&nbsp; <span class="checkbox"></span> 추후 협의함</td>
+      <td colspan="3"><span class="checkbox"></span> 양도함 &nbsp;&nbsp; <span class="checkbox checked"></span> <strong>양도하지 않음</strong> &nbsp;&nbsp; <span class="checkbox"></span> 추후 협의함</td>
     </tr>
     <tr>
       <th>기타 지식재산권</th>
-      <td colspan="3"><span class="checkbox"></span> 양도함 &nbsp;&nbsp; <span class="checkbox"></span> 양도하지 않음 &nbsp;&nbsp; <span class="checkbox"></span> 추후 협의함</td>
+      <td colspan="3"><span class="checkbox"></span> 양도함 &nbsp;&nbsp; <span class="checkbox checked"></span> <strong>양도하지 않음</strong> &nbsp;&nbsp; <span class="checkbox"></span> 추후 협의함</td>
     </tr>
   </table>
   <p style="font-size:12px; color:#888; margin-bottom:20px;">* 게임의 사양에 관한 과업내용서는 별도로 작성할 수 있다.</p>
@@ -255,8 +305,8 @@
       <li>"<strong>대금</strong>"이란 표지에서 정한 제작비용 등의 대금 및 지식재산권 양도금액·이용료(이하 "대금등"이라 한다)를 말한다.</li>
       <li>"<strong>선급금</strong>"이란 수급사업자가 게임 제작을 완료하기 전에 원사업자가 지급하기로 한 대금의 일부를 말한다.</li>
       <li>"<strong>지연이자</strong>"란 대금등 또는 손해배상금을 지급해야 할 자가 지급시기에 지급하지 않을 경우 지급해야 할 손해배상금을 말한다.</li>
-      <li>"<strong>지체상금</strong>"이란 수급사업자가 납품기일에 게임을 납품하지 않을 경우 원사업자에게 지급해야 할 손해배상금을 말한다.</li>
       <li>"<strong>수급사무</strong>"란 표지 및 제5조에서 정한 각 수급사업자의 담당 제작 업무를 말한다.</li>
+      <li>"<strong>참여기간 지분</strong>"이란 본 계약의 각 당사자(원사업자 및 수급사업자 전원)가 본 게임의 제작에 실제로 참여한 개월 수를, 전체 당사자의 참여 개월 수 합계로 나눈 비율을 말한다. 본 계약상 모든 당사자의 시간 가치는 동등한 것으로 간주하며, 풀타임·파트타임·역할·기여도 등에 따른 가중치는 적용하지 아니한다. 각 당사자의 참여 시작일은 본 계약 체결일(또는 추후 합류한 경우 합류에 관한 서면 합의일), 참여 종료일은 탈퇴일·계약 종료일 또는 지식재산권 양도 시점 중 빠른 날로 한다. 1개월 미만의 잔여 기간은 반올림한다.</li>
     </ol>
   </article>
 
@@ -342,7 +392,7 @@
   <article>
     <h2>제13조 &nbsp; 납품기한의 연장</h2>
     <p>① 수급사업자는 이 계약에서 정한 기한 내에 게임을 납품할 수 없는 경우, 표지에서 정한 날까지 그 사실을 원사업자에게 통지하고 기한의 연장을 요청할 수 있다.</p>
-    <p>② 원사업자는 정당한 사유가 있는 경우를 제외하고 제1항의 청구를 승낙한다. 다만, 그 연장기간 동안 표지에서 정한 지체상금을 지급할 것을 조건으로 할 수 있다. 다만, 그 연장이 수급사업자의 책임 없는 사유에 의한 경우에는 그러하지 아니하다.</p>
+    <p>② 원사업자는 정당한 사유가 있는 경우를 제외하고 제1항의 청구를 승낙한다.</p>
   </article>
 
   <article>
@@ -401,12 +451,29 @@
   <div class="section-title">제 4 장 &nbsp; 지식재산권</div>
 
   <article>
-    <h2>제19조 &nbsp; 지식재산권의 귀속 등</h2>
+    <h2>제19조 &nbsp; 지식재산권의 귀속 및 기본 사용권</h2>
     <p>① 게임 'the Cardkov' 및 이와 관련된 일체의 결과물(게임 코드, 아트 에셋, 기획 문서, 음원, 상표, UI 자산, 애니메이션 자산 등을 포함하며 이에 한정하지 아니한다)에 대한 지식재산권은 본래 수급사업자가 갖는다. 다만, 원사업자가 그 창작·개발에 기여한 경우에는 기여비율에 따라 공동으로 갖는다.</p>
-    <p>② 표지에서 정한 바에 따라 게임에 대한 지식재산권을 양도하기로 합의한 경우, 수급사업자는 원사업자가 지식재산권을 등록할 수 있도록 협력한다. 다만, <strong>2차적저작물작성권</strong>의 양도 여부에 대해서는 별도의 협의를 통해 정한다.</p>
-    <p>③ 제2항에 따라 양도하는 경우, 게임에 대한 저작재산권은 해당 저작재산권에 대한 대가를 지급한 때, 산업재산권은 해당 산업재산권을 이전등록한 때에 수급사업자로부터 원사업자에게 이전된다.</p>
-    <p>④ 계약체결 시점에 지식재산권의 양도 또는 이용허락에 대하여 합의하지 아니한 경우에도, 원사업자는 본 계약에 따라 수급사업자가 제작한 게임을 본 계약에서 정한 용도(인디게임 데브캠프 출품 및 Steam 정식 출시)로 사용할 수 있다.</p>
-    <p>⑤ 원사업자와 수급사업자는 「게임산업진흥에 관한 법률」에서 금지하는 불법 게임물 또는 사행성 콘텐츠를 제작하지 아니한다.</p>
+    <p>② 계약체결 시점에 지식재산권의 양도 또는 이용허락에 대하여 합의하지 아니한 경우에도, 원사업자는 본 계약에 따라 수급사업자가 제작한 게임을 본 계약에서 정한 용도(인디게임 데브캠프 출품 및 Steam 정식 출시)로 사용할 수 있다.</p>
+  </article>
+
+  <article>
+    <h2>제20조 &nbsp; 지식재산권의 양도 절차</h2>
+    <p>① 표지에서 정한 바 또는 제21조에 따라 게임에 대한 지식재산권을 양도하기로 합의한 경우, 수급사업자는 원사업자가 지식재산권을 등록할 수 있도록 협력한다. 다만, <strong>2차적저작물작성권</strong>의 양도 여부에 대해서는 별도의 협의를 통해 정한다.</p>
+    <p>② 양도의 효력은 게임에 대한 저작재산권의 경우 해당 저작재산권에 대한 대가를 지급한 때, 산업재산권의 경우 해당 산업재산권을 이전등록한 때에 수급사업자로부터 원사업자에게 발생한다.</p>
+  </article>
+
+  <article>
+    <h2>제21조 &nbsp; 매수청구권 및 양도 가격 산정</h2>
+    <p>① <strong>(매수청구권)</strong> 원사업자는 본 계약 기간 중 또는 본 계약 종료 이후 외부 퍼블리셔·투자자·인수자와의 계약 체결을 위해 필요한 경우, 수급사업자에게 본 게임에 관한 지식재산권의 전부 또는 일부의 양도를 요청할 수 있다. 수급사업자는 정당한 사유 없이 이 요청을 거부할 수 없으며, 정당한 사유 없이 거부하여 원사업자 또는 본 계약의 다른 당사자에게 손해가 발생한 경우 이를 배상한다.</p>
+    <p>② <strong>(양도 가격 산정 공식)</strong> 제①항에 따른 지식재산권 양도의 가격은 다음 각 호 중 양 당사자가 협의하여 채택한 방식으로 산정한다. 협의가 이루어지지 않을 경우 제2호의 방식을 따른다. 모든 산정 방식에서 <strong>양도 대상 수급사업자에게 지급할 금액 = 산정 기준액 × 해당 수급사업자의 참여기간 지분</strong>으로 한다.</p>
+    <ol class="indent">
+      <li><strong>매출 기준</strong> : 양도 시점 직전 12개월간 게임 누적 매출액을 산정 기준액으로 한다.</li>
+      <li><strong>제3자 감정평가</strong> : 양 당사자가 합의한 제3자 감정평가 기관이 산정한 본 게임 전체 IP의 공정시장가(FMV)를 산정 기준액으로 한다. 평가비용은 원사업자가 부담한다.</li>
+      <li><strong>퍼블리셔·투자자 평가가 기준</strong> : 외부 퍼블리셔·투자자·인수자가 제시한 본 게임 전체 IP의 평가가를 산정 기준액으로 한다.</li>
+      <li><strong>그 외 합의 방식</strong> : 양 당사자가 위 각 호 외에 합리적인 산정 기준액에 합의한 경우 그 금액을 산정 기준액으로 한다.</li>
+    </ol>
+    <p style="font-size:13px; color:#555; margin-left:8px;">※ 예시: 게임 제작에 12개월 참여한 A·B 2인과 6개월 참여한 C 1인이 있는 경우 참여기간 지분은 A : B : C = 12 : 12 : 6 = 2 : 2 : 1 이며, A에게 지급할 양도 가격은 산정 기준액 × 2/5 가 된다.</p>
+    <p>③ 제①항에 따라 지식재산권을 양도하는 경우, 양도 절차 및 효력 발생 시점에 관하여는 제20조를 준용한다.</p>
   </article>
 
 
@@ -414,44 +481,33 @@
   <div class="section-title">제 5 장 &nbsp; 책임 및 분쟁해결</div>
 
   <article>
-    <h2>제20조 &nbsp; 손해배상</h2>
+    <h2>제22조 &nbsp; 손해배상</h2>
     <p>① 원사업자 또는 수급사업자가 이 계약을 위반한 상대방의 행위로 인하여 손해를 입은 경우, 그 상대방은 손해배상의 책임을 진다. 다만, 상대방이 고의 또는 과실 없음을 증명한 경우에는 그러하지 아니하다.</p>
     <p>② 수급사업자는 이 계약에 따른 의무를 이행하기 위해 제3자를 사용한 경우, 그 제3자의 행위로 인하여 원사업자에게 발생한 손해에 대하여 제3자와 연대하여 책임을 진다.</p>
     <p>③ 원사업자가 부당한 위탁취소(제15조 제1항), 부당반품(제15조 제2항), 부당한 대금 결정(제18조 제1항) 또는 감액금지(제17조 제1항) 등을 위반한 경우, 수급사업자에게 발생한 손해의 <strong>3배를 넘지 아니하는 범위</strong>에서 배상책임을 진다. 다만, 원사업자가 고의 또는 과실 없음을 증명한 경우에는 그러하지 아니하다.</p>
   </article>
 
   <article>
-    <h2>제21조 &nbsp; 지체상금</h2>
-    <p>① 수급사업자가 납품기한 내에 게임을 납품하지 아니하거나 검사에 합격하지 못한 경우, 원사업자는 지체일수에 표지에서 정한 지체상금요율을 곱한 금액(이하 "지체상금"이라 한다)을 청구할 수 있다.</p>
-    <p>② 다음 각 호의 어느 하나에 해당하는 경우의 일수는 지체일수에 산입하지 아니한다.</p>
-    <ol class="indent">
-      <li>불가항력의 사유에 의한 경우</li>
-      <li>원사업자의 책임으로 수급사무의 착수가 지연되거나 수급사무가 중단된 경우</li>
-      <li>그 밖에 수급사업자의 책임 없는 사유로 인하여 지체된 경우</li>
-    </ol>
-  </article>
-
-  <article>
-    <h2>제22조 &nbsp; 하자담보책임</h2>
+    <h2>제23조 &nbsp; 하자담보책임</h2>
     <p>① 검사에 합격한 게임에 하자가 있는 경우, 원사업자는 수급사업자에 대하여 상당한 기간을 정하여 그 하자의 보수를 청구할 수 있다.</p>
     <p>② 하자가 원사업자가 제공한 자료의 성질 또는 원사업자의 지시에 따라 발생한 경우에는 본조를 적용하지 아니한다. 다만, 수급사업자가 그 부적당함을 알고 원사업자에게 고지하지 아니한 경우에는 그러하지 아니하다.</p>
     <p>③ 본조의 권리는 검사 합격일로부터 <strong>1년 이내</strong>에 행사한다.</p>
   </article>
 
   <article>
-    <h2>제23조 &nbsp; 게임의 등급분류 및 출시 협조</h2>
+    <h2>제24조 &nbsp; 게임의 등급분류 및 출시 협조</h2>
     <p>① 수급사업자가 납품한 게임에 대해 「게임산업진흥에 관한 법률」에 따라 등급분류를 받지 못한 경우, 원사업자는 수급사업자의 동의를 얻어 등급분류에 필요한 추가작업을 요청할 수 있다. 추가작업의 작업기간 및 작업비용은 원사업자와 수급사업자가 협의하여 정한다.</p>
     <p>② 수급사업자는 Steam 플랫폼 등록 등 출시에 필요한 법적·행정적 절차에 적극 협조한다.</p>
   </article>
 
   <article>
-    <h2>제24조 &nbsp; 이행보증금</h2>
+    <h2>제25조 &nbsp; 이행보증금</h2>
     <p>① 수급사업자는 이 계약의 이행을 보증하기 위하여 표지에서 정한 이행보증금을 그 지급시기에 원사업자에게 지급한다. 다만, 당사자 간 합의에 따라 이행보증금 지급을 면제할 수 있다.</p>
     <p>② 수급사업자는 제1항에 따른 이행보증금의 지급을 이행보증보험증권의 제출로 갈음할 수 있다.</p>
   </article>
 
   <article>
-    <h2>제25조 &nbsp; 계약의 해제 또는 해지</h2>
+    <h2>제26조 &nbsp; 계약의 해제 또는 해지</h2>
     <p>① 원사업자 또는 수급사업자는 다음 각 호의 어느 하나에 해당하는 경우에는 이 계약의 전부 또는 일부를 해제 또는 해지할 수 있다.</p>
     <ol class="indent">
       <li>상대방이 이 계약상의 의무를 이행하지 아니하여 상당한 기간을 정한 최고에도 불구하고 이를 이행하지 아니한 경우</li>
@@ -464,7 +520,7 @@
   </article>
 
   <article>
-    <h2>제26조 &nbsp; 부당한 특약의 효력</h2>
+    <h2>제27조 &nbsp; 부당한 특약의 효력</h2>
     <p>이 계약 또는 별도 약정에서 정하고 있는 내용 중 다음 각 호의 어느 하나에 해당하는 약정은 무효로 한다.</p>
     <ol class="indent">
       <li>이 계약 서면에 기재되지 아니한 사항을 요구함에 따라 발생된 비용을 수급사업자에게 부담시키는 약정</li>
@@ -476,20 +532,20 @@
   </article>
 
   <article>
-    <h2>제27조 &nbsp; 분쟁해결</h2>
+    <h2>제28조 &nbsp; 분쟁해결</h2>
     <p>① 이 계약과 관련하여 분쟁이 발생한 경우, 원사업자와 수급사업자는 상호 협의하여 분쟁을 해결하기 위해 노력한다.</p>
     <p>② 제1항에도 불구하고 분쟁이 해결되지 않은 경우, 원사업자 또는 수급사업자는 「콘텐츠산업진흥법」에 따른 콘텐츠분쟁조정위원회, 「저작권법」에 따른 한국저작권위원회 또는 「하도급거래 공정화에 관한 법률」에 따른 하도급분쟁조정협의회 등에 조정을 신청할 수 있다.</p>
   </article>
 
   <article>
-    <h2>제28조 &nbsp; 준거법 및 재판관할</h2>
+    <h2>제29조 &nbsp; 준거법 및 재판관할</h2>
     <p>① 본 계약은 대한민국 법령에 따라 해석되고 이행된다.</p>
     <p>② 본 계약과 관련된 소는 원사업자 또는 수급사업자의 주된 사무소를 관할하는 지방법원, 또는 <strong>서울중앙지방법원</strong>에 제기한다.</p>
     <p>③ 본 계약은 본 계약에서 정한 사항에 관하여 원사업자와 수급사업자 간의 완전한 합의를 구성하며, 본 계약 체결 이전의 구두 또는 서면에 의한 합의·약속·표시는 본 계약으로 대체된다.</p>
   </article>
 
   <article>
-    <h2>제29조 &nbsp; 계약 이외의 사항</h2>
+    <h2>제30조 &nbsp; 계약 이외의 사항</h2>
     <p>이 계약에서 정한 것 이외의 사항에 대해서는 「하도급거래 공정화에 관한 법률」 등 관련 법령의 강행법규에서 정한 바에 따르며, 그 이외의 사항에 대해서는 양 당사자가 협의하여 정한다.</p>
   </article>
 
@@ -539,5 +595,19 @@
   </div>
 
 </div>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    function render() { btn.textContent = root.classList.contains('dark') ? '☀️' : '🌙'; }
+    render();
+    btn.addEventListener('click', function () {
+      root.classList.toggle('dark');
+      try { localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light'); } catch (e) {}
+      render();
+    });
+  })();
+</script>
 </body>
 </html>
