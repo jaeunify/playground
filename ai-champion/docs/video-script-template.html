@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>영상 대본 템플릿</title>
+<style>
+  :root { --bg: #f5f6fb; --card: #ffffff; --ink: #1a1f36; --muted: #6b7280; --line: #e5e7eb; --accent: #5b4bff; --accent-soft: #eceafd; --pink: #ff4d8d; --yellow: #f59e0b; --green: #10b981; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Malgun Gothic", sans-serif; background: var(--bg); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 32px 20px 80px; }
+  header.hero { text-align: center; padding: 48px 24px 40px; background: linear-gradient(135deg, #7a6cff 0%, #5b4bff 55%, #ff4d8d 100%); color: #fff; border-radius: 24px; margin-bottom: 28px; box-shadow: 0 14px 40px rgba(91, 75, 255, 0.28); }
+  header.hero .tag { display: inline-block; padding: 6px 14px; background: rgba(255, 255, 255, 0.22); border-radius: 999px; font-size: 12px; letter-spacing: 3px; margin-bottom: 14px; font-weight: 600; }
+  header.hero h1 { font-size: 40px; margin: 0 0 10px; font-weight: 800; letter-spacing: -1.2px; }
+  header.hero .sub { margin: 0 0 6px; opacity: 0.95; font-size: 17px; }
+  header.hero .meta { display: inline-flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; justify-content: center; }
+  header.hero .meta span { padding: 6px 12px; background: rgba(255, 255, 255, 0.18); border-radius: 8px; font-size: 13px; }
+  section { background: var(--card); border-radius: 18px; padding: 28px; margin-bottom: 20px; box-shadow: 0 2px 14px rgba(26, 31, 54, 0.04); }
+  section h2 { font-size: 22px; margin: 0 0 18px; display: flex; align-items: center; gap: 10px; letter-spacing: -0.4px; }
+  section h2 .pill { font-size: 11px; letter-spacing: 1px; padding: 4px 10px; background: var(--accent-soft); color: var(--accent); border-radius: 999px; font-weight: 700; }
+  .scene { border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin-bottom: 14px; background: #fbfbfe; position: relative; }
+  .scene-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .scene-time { font-family: "SF Mono", "Consolas", "Menlo", monospace; font-size: 13px; background: var(--ink); color: #fff; padding: 4px 10px; border-radius: 6px; letter-spacing: 0.5px; }
+  .scene-title { font-size: 15px; font-weight: 700; color: var(--accent); }
+  .scene-label { font-size: 11px; padding: 3px 9px; background: #fff; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-weight: 600; letter-spacing: 0.5px; }
+  .visual { font-size: 13px; color: var(--muted); background: #fff; border-left: 3px solid var(--pink); padding: 8px 12px; border-radius: 6px; margin-bottom: 12px; }
+  .visual b { color: var(--ink); font-weight: 700; }
+  .caution { font-size: 13px; color: #92400e; background: #fef3c7; border-left: 3px solid var(--yellow); padding: 10px 14px; border-radius: 6px; margin-top: 12px; }
+  .caution b { color: #78350f; font-weight: 700; }
+  .narration { font-size: 15.5px; line-height: 1.8; color: var(--ink); padding-left: 4px; }
+  .narration p { margin: 0 0 8px; }
+  .narration .speaker { font-size: 12px; color: var(--accent); font-weight: 700; letter-spacing: 1px; margin-right: 8px; }
+  .narration .quote::before { content: "\201C"; color: var(--accent); font-weight: 800; margin-right: 2px; }
+  .narration .quote::after { content: "\201D"; color: var(--accent); font-weight: 800; margin-left: 2px; }
+  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .member { border: 1px solid var(--line); border-radius: 14px; padding: 20px; background: #fbfbfe; }
+  .member h3 { margin: 0 0 6px; font-size: 17px; display: flex; align-items: center; gap: 8px; }
+  .member .role { font-size: 12px; color: var(--accent); font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
+  .member ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+  .member ul li { margin-bottom: 4px; }
+  .adjust ul { margin: 0; padding-left: 20px; }
+  .adjust li { margin-bottom: 10px; color: var(--ink); font-size: 14.5px; }
+  .adjust li b { color: var(--accent); }
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 4px; }
+  .summary .stat { background: #fbfbfe; border: 1px solid var(--line); border-radius: 12px; padding: 14px; text-align: center; }
+  .summary .stat .k { font-size: 11px; color: var(--muted); letter-spacing: 1px; margin-bottom: 4px; }
+  .summary .stat .v { font-size: 18px; font-weight: 800; color: var(--ink); }
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 28px; }
+  .placeholder { color: #9ca3af; font-style: italic; }
+  .todo-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 2px 7px; background: #fef3c7; color: #92400e; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+  @media (max-width: 640px) { header.hero h1 { font-size: 30px; } .team-grid { grid-template-columns: 1fr; } .summary { grid-template-columns: repeat(2, 1fr); } section { padding: 22px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ① 헤더 -->
+  <header class="hero">
+    <div class="tag">VIDEO SCRIPT</div>
+    <h1 class="placeholder">[영상 제목]</h1>
+    <p class="sub">부제 · <b class="placeholder">[기술명 / 슬로건]</b></p>
+    <div class="meta">
+      <span class="placeholder">[대회 / 행사명]</span>
+      <span class="placeholder">[협력 기관 / 기술 파트너]</span>
+      <span class="placeholder">러닝타임 약 ?'??″</span>
+    </div>
+  </header>
+
+  <!-- ② 개요 -->
+  <section>
+    <h2>개요 <span class="pill">OVERVIEW</span></h2>
+    <div class="summary">
+      <div class="stat"><div class="k">장르</div><div class="v placeholder">[장르]</div></div>
+      <div class="stat"><div class="k">길이</div><div class="v placeholder">약 ?초</div></div>
+      <div class="stat"><div class="k">톤</div><div class="v placeholder">[톤]</div></div>
+      <div class="stat"><div class="k">킬러컷</div><div class="v placeholder">[핵심 씬]</div></div>
+    </div>
+  </section>
+
+  <!-- ③ 씬별 대본 -->
+  <section>
+    <h2>씬별 대본 <span class="pill">SCRIPT</span></h2>
+
+    <!-- 씬 1 — 오프닝 / 훅 -->
+    <div class="scene">
+      <div class="scene-head">
+        <span class="scene-time">0:00 - 0:??</span>
+        <span class="scene-title">오프닝 — 공감 훅 <span class="todo-badge">TODO</span></span>
+        <span class="scene-label">HOOK</span>
+      </div>
+      <div class="visual"><b>화면:</b> <span class="placeholder">[오프닝 화면 설명 — 시청자 공감을 이끌어 낼 장면]</span></div>
+      <div class="narration">
+        <p><span class="speaker">NARR</span><span class="quote placeholder">[오프닝 나레이션 — 시청자의 공감을 이끌어 낼 한 두 문장]</span></p>
+      </div>
+    </div>
+
+    <!-- 씬 2 — 문제 제기 -->
+    <div class="scene">
+      <div class="scene-head">
+        <span class="scene-time">0:?? - 0:??</span>
+        <span class="scene-title">문제 제기 <span class="todo-badge">TODO</span></span>
+        <span class="scene-label">PROBLEM</span>
+      </div>
+      <div class="visual"><b>화면:</b> <span class="placeholder">[문제를 시각적으로 보여주는 장면]</span></div>
+      <div class="narration">
+        <p><span class="speaker">NARR</span><span class="quote placeholder">[문제를 구체화하고 심화하는 나레이션]</span></p>
+      </div>
+      <!-- 연출 주의사항이 있으면 아래 caution 활성화 -->
+      <!-- <div class="caution"><b>주의:</b> [연출 시 주의사항]</div> -->
+    </div>
+
+    <!-- 씬 3 — 솔루션 -->
+    <div class="scene">
+      <div class="scene-head">
+        <span class="scene-time">0:?? - 0:??</span>
+        <span class="scene-title">솔루션 소개 <span class="todo-badge">TODO</span></span>
+        <span class="scene-label">SOLUTION</span>
+      </div>
+      <div class="visual"><b>화면:</b> <span class="placeholder">[솔루션 작동 과정을 보여주는 화면]</span></div>
+      <div class="narration">
+        <p><span class="speaker">NARR</span><span class="quote placeholder">[솔루션 이름 소개]</span></p>
+        <p><span class="speaker">NARR</span><span class="quote placeholder">[핵심 기능 설명 — 어떻게 문제를 해결하는가]</span></p>
+      </div>
+      <div class="visual" style="margin-top:10px;"><b>화면:</b> <span class="placeholder">[데모 / 결과 화면]</span></div>
+    </div>
+
+    <!-- 씬 4 — 차별점 -->
+    <div class="scene">
+      <div class="scene-head">
+        <span class="scene-time">0:?? - 0:??</span>
+        <span class="scene-title">차별점 <span class="todo-badge">TODO</span></span>
+        <span class="scene-label">DIFFERENTIATOR</span>
+      </div>
+      <div class="narration">
+        <p><span class="speaker">NARR</span><span class="quote placeholder">[기존 대비 무엇이 다른가 — 한 두 문장으로 임팩트 있게]</span></p>
+      </div>
+    </div>
+
+    <!-- 씬 5 — 팀 소개 -->
+    <div class="scene">
+      <div class="scene-head">
+        <span class="scene-time">0:?? - 0:??</span>
+        <span class="scene-title">팀 소개 <span class="todo-badge">TODO</span></span>
+        <span class="scene-label">TEAM</span>
+      </div>
+      <div class="visual"><b>화면:</b> <span class="placeholder">[팀명 / 멤버 프로필 화면]</span></div>
+      <div class="narration">
+        <p><span class="speaker">NARR</span><span class="quote placeholder">[팀명 소개 + 한 줄 요약]</span></p>
+        <p><span class="speaker">MEM 1</span><span class="quote placeholder">[멤버 1 자기소개 — 역할 + 경력 + 이번 프로젝트에서의 기여]</span></p>
+        <p><span class="speaker">MEM 2</span><span class="quote placeholder">[멤버 2 자기소개 — 역할 + 경력 + 이번 프로젝트에서의 기여]</span></p>
+        <p><span class="speaker">NARR</span><span class="quote placeholder">[두 멤버의 시너지를 강조하는 마무리 멘트]</span></p>
+      </div>
+    </div>
+
+    <!-- 씬 6 — 클로징 -->
+    <div class="scene">
+      <div class="scene-head">
+        <span class="scene-time">0:?? - 0:??</span>
+        <span class="scene-title">클로징 <span class="todo-badge">TODO</span></span>
+        <span class="scene-label">CLOSING</span>
+      </div>
+      <div class="visual"><b>화면:</b> <span class="placeholder">[로고 / 슬로건]</span></div>
+      <div class="narration">
+        <p><span class="speaker">NARR</span><span class="quote placeholder">[팀명 + 제품명으로 끝나는 클로징 멘트]</span></p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ④ 팀 구성 -->
+  <section>
+    <h2>팀 구성 <span class="pill">MEMBERS</span></h2>
+    <div class="team-grid">
+      <div class="member">
+        <div class="role placeholder">MEMBER 01 · [직함]</div>
+        <h3 class="placeholder">[이름 / 닉네임]</h3>
+        <ul>
+          <li class="placeholder">[주요 경력 1]</li>
+          <li class="placeholder">[주요 경력 2]</li>
+          <li class="placeholder">[이번 프로젝트 담당 역할]</li>
+        </ul>
+      </div>
+      <div class="member">
+        <div class="role placeholder">MEMBER 02 · [직함]</div>
+        <h3 class="placeholder">[이름 / 닉네임]</h3>
+        <ul>
+          <li class="placeholder">[주요 경력 1]</li>
+          <li class="placeholder">[주요 경력 2]</li>
+          <li class="placeholder">[이번 프로젝트 담당 역할]</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ 조정 포인트 -->
+  <section class="adjust">
+    <h2>조정 포인트 <span class="pill">REVISION</span></h2>
+    <ul>
+      <li><b>분량 조정</b> — 필요시 어느 씬을 줄이거나 합칠 수 있는지 메모해 두세요.</li>
+      <li><b>톤</b> — 현재 설정 톤을 기재하고, 대안 톤도 적어두면 촬영 현장에서 유용합니다.</li>
+      <li><b>핵심 기술 강조</b> — 심사 가중치가 높은 키워드가 있다면 솔루션 파트에 한 번 더 언급.</li>
+      <li><b>데모 장면</b> — 킬러컷 씬에 충분한 시간을 배분했는지 확인.</li>
+      <li><b>기타 메모</b> — <span class="placeholder">[추가 수정 사항을 여기에 자유롭게 기재]</span></li>
+    </ul>
+  </section>
+
+  <footer class="placeholder">영상 대본 초안 v1 · [팀명] × [제품명]</footer>
+</div>
+</body>
+</html>
